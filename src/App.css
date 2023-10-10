@@ -1,0 +1,33 @@
+.container {
+    text-align: center;
+}
+
+nav {
+    display: grid;
+    grid: auto / auto-flow;
+    padding: 3px;
+    margin-bottom: 16px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+a {
+    display: block;
+    color: #000;
+    text-align: center;
+    line-height: 32px;
+    text-decoration: none;
+}
+
+a.active {
+    background: #fff;
+    font-weight: 500;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-button {
+    font-size: larger;
+    width: 90%;
+    height: 30px;
+}
