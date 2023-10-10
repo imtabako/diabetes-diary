@@ -155,6 +155,7 @@ function App() {
       </nav>
       <div className="container">
         <SlideRoutes>
+          <Route path="/diabetes-diary/" element={ <List {...propsObj} /> }/>
           <Route path="/today" element={ <Today {...propsObj} /> }/>
           <Route index path="/" element={ <List {...propsObj} /> }/>
           <Route path="/graphs" element={ <Today {...propsObj} /> }/>
