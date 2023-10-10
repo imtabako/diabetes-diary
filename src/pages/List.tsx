@@ -109,7 +109,6 @@ function List({
 
   return (
     <>
-      <h1>List</h1>
       {Object.keys(result).map((key, index) => {
         return (
           <div key={key} className="list-day">

@@ -60,11 +60,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/diabetes-diary">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <SDKProvider initOptions={{ cssVars: true }}>
-          <DisplayGate>
             <App />
-          </DisplayGate>
-        </SDKProvider>
       </LocalizationProvider>
     </BrowserRouter>
   </React.StrictMode>,

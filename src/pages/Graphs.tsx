@@ -1,8 +1,9 @@
-// import CanvasJSReact from '@canvasjs/react-charts'
+import React from "react";
+import CanvasJSReact from '@canvasjs/react-charts'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import CanvasJSReact from '/src/canvasjs.react.js'
+// import CanvasJSReact from '/src/canvasjs.react.js'
 
 import './Graphs.css'
 
@@ -50,7 +51,6 @@ function Graphs({
 
   return (
     <>
-      <h1>Graphs</h1>
       <CanvasJSChart options={{
         title:{
           text: ""
