@@ -158,7 +158,7 @@ function App() {
           <Route path="/today" element={ <Today {...propsObj} /> }/>
           <Route index path="/" element={ <List {...propsObj} /> }/>
           <Route path="/graphs" element={ <Graphs {...propsObj} /> }/>
-          <Route path="/stats" element={ <Stats {...propsObj} /> }/>
+          <Route path="/stats" element={ <Stats /> }/>
         </SlideRoutes>
         <button className="main-button" onClick={() => setCount((count) => count + 1)}>
           count is {count}
