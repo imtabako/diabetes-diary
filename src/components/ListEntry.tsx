@@ -61,7 +61,7 @@ function ListEntry({
       <div className="list-entry-req">
         <span className={"list-entry-sugar-before" + (isDanger? " danger" : "")} role="img">{isDanger? "!" : ""}</span>
         <div className={"list-entry-sugar" + (isBad? " bad" : "")}>
-          {sugar / 10} <small>ммоль/Л.</small>
+          {sugar / 10} <small>mmole/L</small>
         </div>
         {mood !== 0 && renderMood()
         }

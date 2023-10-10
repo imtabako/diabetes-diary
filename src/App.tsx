@@ -8,7 +8,6 @@ import Stats from "./pages/Stats.tsx";
 import Graphs from "./pages/Graphs.tsx";
 import {useBackButton, useInitData, useMainButton, useWebApp} from "@tma.js/sdk-react";
 import Measure from "./pages/Measure.tsx";
-// import {useMainButton} from "@tma.js/sdk-react";
 
 function App() {
   const initData = useInitData()
