@@ -5,7 +5,7 @@ import SlideRoutes from "react-slide-routes";
 import './App.css'
 import List from "./pages/List.tsx";
 import Today from "./pages/Today.tsx";
-import Graphs from "./pages/Graphs.tsx";
+// import Graphs from "./pages/Graphs.tsx";
 import Stats from "./pages/Stats.tsx";
 // import {useMainButton} from "@tma.js/sdk-react";
 
@@ -157,7 +157,7 @@ function App() {
         <SlideRoutes>
           <Route path="/today" element={ <Today {...propsObj} /> }/>
           <Route index path="/" element={ <List {...propsObj} /> }/>
-          <Route path="/graphs" element={ <Graphs {...propsObj} /> }/>
+          <Route path="/graphs" element={ <Today {...propsObj} /> }/>
           <Route path="/stats" element={ <Stats /> }/>
         </SlideRoutes>
         <button className="main-button" onClick={() => setCount((count) => count + 1)}>

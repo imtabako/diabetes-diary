@@ -28,6 +28,7 @@ function Graphs({
   measures,
   minSugar, maxSugar
                 }) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const CanvasJS = CanvasJSReact.CanvasJS;
   const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 

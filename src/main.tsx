@@ -9,39 +9,6 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 
 /**
- * Displays current application init data.
- */
-function InitData() {
-  const initData = useInitData();
-
-  const initDataJson = useMemo(() => {
-    if (!initData) {
-      return 'Init data is empty.';
-    }
-    const { authDate, chat, hash, canSendAfter, queryId, receiver, user, startParam } = initData;
-
-    return JSON.stringify({
-      authDate,
-      chat,
-      hash,
-      canSendAfter,
-      queryId,
-      receiver,
-      user,
-      startParam,
-    }, null, ' ');
-  }, [initData]);
-
-  return (
-    <pre>
-      <code>
-        {initDataJson}
-      </code>
-    </pre>
-  );
-}
-
-/**
  * This component is the layer controlling the application display. It displays
  * application in case, the SDK is initialized, displays an error if something
  * went wrong, and a loader if the SDK is warming up.
@@ -95,7 +62,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <SDKProvider initOptions={{ cssVars: true }}>
           <DisplayGate>
-            <InitData />
             <App />
           </DisplayGate>
         </SDKProvider>
