@@ -17,7 +17,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 /*eslint-disable*/
 /*jshint ignore:start*/
 import React from "react";
-import {CanvasJS} from './canvasjs.min.js'
+import CanvasJS from './canvasjs.min.js'
 
 // var CanvasJS = require('./canvasjs.min');
 CanvasJS = CanvasJS.Chart ? CanvasJS : window.CanvasJS;

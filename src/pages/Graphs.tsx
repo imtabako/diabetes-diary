@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import {CanvasJSReact} from '/src/canvasjs.react.js'
+import CanvasJSReact from '/src/canvasjs.react.js'
 
 import './Graphs.css'
 
