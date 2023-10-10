@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { MobileDateTimePicker } from '@mui/x-date-pickers';
 import SlideRule from 'react-slide-rule';
 
 import dayjs from "dayjs";
+import {useNavigate} from "react-router-dom";
 
 function Measure({
+  mainButton,
   measures, setMeasures
                  }) {
   const [sugarVal, setSugarVal] = useState(5)
@@ -41,34 +43,43 @@ function Measure({
     setComment(e.target.value)
   }
 
-  const addMeasure = () => {
-    const year = (dateTime.year() - 2000).toString()
-    const month = (dateTime.month() + 1).toString()
-    const day = dateTime.date() < 10 ? '0' + dateTime.date() : (dateTime.date()).toString()
+  const navigate = useNavigate()
 
-    const hour = dateTime.hour().toString()
-    const minute = dateTime.minute().toString()
+  useEffect(() => {
+    const addMeasure = () => {
+      const year = (dateTime.year() - 2000).toString()
+      const month = (dateTime.month() + 1).toString()
+      const day = dateTime.date() < 10 ? '0' + dateTime.date() : (dateTime.date()).toString()
 
-    console.log({year, month, day, hour, minute})
+      const hour = dateTime.hour().toString()
+      const minute = dateTime.minute().toString()
 
-    const newId = measures[measures.length - 1].id + 1
+      console.log({year, month, day, hour, minute})
 
-    const newMeasure = {
-      id: newId,
-      sugar: Number(sugarVal.toFixed(2)) * 10,
-      date: day + month + year,
-      day: day,
-      month: month,
-      year: year,
-      time: hour + ':' + minute,
-      mood: mood,
-      mealType: meal,
-      comment: isComment ? '' : comment
+      const newId = measures[measures.length - 1].id + 1
+
+      const newMeasure = {
+        id: newId,
+        sugar: Number(sugarVal.toFixed(2)) * 10,
+        date: day + month + year,
+        day: day,
+        month: month,
+        year: year,
+        time: hour + ':' + minute,
+        mood: mood,
+        mealType: meal,
+        comment: isComment ? '' : comment
+      }
+
+      setMeasures([...measures, newMeasure])
+      navigate('/')
     }
 
-    console.log(newMeasure)
-    setMeasures([...measures, newMeasure])
-  }
+    mainButton.setText("+")
+    mainButton.enable().show()
+
+    mainButton.on(addMeasure)
+  }, [comment, dateTime, isComment, mainButton, meal, measures, mood, setMeasures, sugarVal, navigate])
 
   return (
     <>
@@ -152,9 +163,6 @@ function Measure({
           />
           <textarea value={comment} onChange={handleComment}></textarea>
         </div>
-      </div>
-      <div className="measure">
-        <button className="add" onClick={addMeasure} >Add</button>
       </div>
     </>
   );

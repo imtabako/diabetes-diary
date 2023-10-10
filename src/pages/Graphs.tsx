@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CanvasJSReact from '@canvasjs/react-charts'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -30,6 +30,7 @@ function compareDateTimes(a, b) {
 }
 
 function Graphs({
+  mainButton,
   measures,
   minSugar, maxSugar
                 }) {
@@ -47,7 +48,9 @@ function Graphs({
     }
   ))
 
-  const delta = measuresPoints[0].x - measuresPoints[measuresPoints.length - 1].x
+  useEffect(() => {
+    mainButton.off()
+  }, [mainButton])
 
   return (
     <>
@@ -97,8 +100,8 @@ function Graphs({
           xValueFormatString: "",
           yValueFormatString: "",
           dataPoints: [
-            { x: measuresPoints[0].x - delta, y: [minSugar/10, maxSugar/10] },
-            { x: measuresPoints[measuresPoints.length-1].x + delta, y: [minSugar/10, maxSugar/10] },
+            { x: measuresPoints[0].x, y: [minSugar/10, maxSugar/10] },
+            { x: measuresPoints[measuresPoints.length-1].x, y: [minSugar/10, maxSugar/10] },
           ]
         },
         {
@@ -111,8 +114,8 @@ function Graphs({
           xValueFormatString: "",
           yValueFormatString: "",
           dataPoints: [
-            { x: measuresPoints[0].x - delta, y: minSugar/10 },
-            { x: measuresPoints[measuresPoints.length-1].x + delta, y: minSugar/10 },
+            { x: measuresPoints[0].x, y: minSugar/10 },
+            { x: measuresPoints[measuresPoints.length-1].x, y: minSugar/10 },
           ]
         },
         ]

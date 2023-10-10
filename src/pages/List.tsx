@@ -1,6 +1,8 @@
 import ListEntry from "../components/ListEntry.tsx";
 
 import './List.css'
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 // date format: ddmmyy
 function compareDates(a, b) {
@@ -28,6 +30,7 @@ function compareTimes(a: string, b: string) {
 }
 
 function List({
+  mainButton,
   measures, setMeasures,
   minSugar, maxSugar
               }) {
@@ -105,7 +108,18 @@ function List({
   for (const dateM in result) {
     result[dateM].sort((a, b) => compareTimes(a.time, b.time))
   }
-  console.log(result)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const addMeasure = () => {
+      navigate('/measure')
+    }
+    mainButton.setText("Add sugar measure")
+    mainButton.enable().show()
+
+    mainButton.on(addMeasure)
+  }, [mainButton, navigate])
 
   return (
     <>

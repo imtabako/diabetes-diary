@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from "react-router-dom";
-import { SDKProvider, useInitData, useSDK } from "@tma.js/sdk-react";
+import { SDKProvider, useSDK } from "@tma.js/sdk-react";
 import {LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
@@ -13,7 +13,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
  * application in case, the SDK is initialized, displays an error if something
  * went wrong, and a loader if the SDK is warming up.
  */
-function DisplayGate({ children }: PropsWithChildren) {
+function Loader({ children }: PropsWithChildren) {
   const { didInit, components, error } = useSDK();
   const errorMessage = useMemo<null | string>(() => {
     if (!error) {
@@ -60,7 +60,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/diabetes-diary">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <SDKProvider>
+          <Loader>
             <App />
+          </Loader>
+        </SDKProvider>
       </LocalizationProvider>
     </BrowserRouter>
   </React.StrictMode>,

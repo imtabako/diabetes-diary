@@ -1,16 +1,21 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { NavLink, Route } from "react-router-dom";
 import SlideRoutes from "react-slide-routes";
 
 import './App.css'
 import List from "./pages/List.tsx";
-import Today from "./pages/Today.tsx";
-// import Graphs from "./pages/Graphs.tsx";
 import Stats from "./pages/Stats.tsx";
 import Graphs from "./pages/Graphs.tsx";
+import {useBackButton, useInitData, useMainButton, useWebApp} from "@tma.js/sdk-react";
+import Measure from "./pages/Measure.tsx";
 // import {useMainButton} from "@tma.js/sdk-react";
 
 function App() {
+  const initData = useInitData()
+  const backButton = useBackButton()
+  const mainButton = useMainButton()
+  const webApp = useWebApp()
+
   const [count, setCount] = useState(0)
 
   const [minSugar, setMinSugar] = useState(44)
@@ -136,9 +141,21 @@ function App() {
       comment: "Almost died"
     });
 
+  useEffect(() => {
+    const listener = () => webApp.close()
+    backButton.on('click', listener)
+    backButton.show()
+
+    return () => {
+      backButton.off('click', listener)
+      backButton.hide()
+    }
+  }, [backButton, webApp])
+
   const [measures, setMeasures] = useState(_measures);
 
   const propsObj = {
+    initData, backButton, mainButton,
     measures, setMeasures,
     minSugar, setMinSugar,
     maxSugar, setMaxSugar,
@@ -149,7 +166,7 @@ function App() {
     <>
       {/*<Navbar />*/}
       <nav>
-        <NavLink to="/today">Today</NavLink>
+        <NavLink to="/measure">+</NavLink>
         <NavLink to="/" end>List</NavLink>
         <NavLink to="/graphs">Graphs</NavLink>
         <NavLink to="/stats">Statistics</NavLink>
@@ -157,7 +174,7 @@ function App() {
       <div className="container">
         <SlideRoutes>
           <Route path="/diabetes-diary/" element={ <List {...propsObj} /> }/>
-          <Route path="/today" element={ <Today {...propsObj} /> }/>
+          <Route path="/measure" element={ <Measure {...propsObj} /> }/>
           <Route index path="/" element={ <List {...propsObj} /> }/>
           <Route path="/graphs" element={ <Graphs {...propsObj} /> }/>
           <Route path="/stats" element={ <Stats /> }/>
