@@ -2,15 +2,20 @@ import {useEffect, useState} from "react";
 
 import './ListEntry.css'
 
-interface ListEntryProps {
-  sugar: number;
-  time: string;
-  mood?: number;
-  mealType?: number;
-  comment?: string;
-}
+// interface ListEntryProps {
+//   minSugar: number,
+//   maxSugar: number,
+//   sugar: number;
+//   time: string;
+//   mood?: number;
+//   mealType?: number;
+//   comment?: string;
+// }
 
-function ListEntry({sugar, time, mood = 0, mealType = 0, comment = ''}: ListEntryProps) {
+function ListEntry({
+                     minSugar, maxSugar,
+                     sugar, time, mood, mealType, comment
+                   }) {
   function renderMood() {
     switch (mood) {
       case 1:
@@ -43,9 +48,6 @@ function ListEntry({sugar, time, mood = 0, mealType = 0, comment = ''}: ListEntr
     }
   }
 
-  const minSugar = 44
-  const maxSugar = 72
-
   const [isDanger, setIsDanger] = useState(false)
   const [isBad, setIsBad] = useState(false)
 
@@ -57,7 +59,7 @@ function ListEntry({sugar, time, mood = 0, mealType = 0, comment = ''}: ListEntr
   return (
     <div className="list-entry">
       <div className="list-entry-req">
-        <span className={"list-entry-sugar-before" + (isDanger? " danger" : "")}>{isDanger? "!" : ""}</span>
+        <span className={"list-entry-sugar-before" + (isDanger? " danger" : "")} role="img">{isDanger? "!" : ""}</span>
         <div className={"list-entry-sugar" + (isBad? " bad" : "")}>
           {sugar / 10} <small>ммоль/Л.</small>
         </div>
@@ -71,7 +73,7 @@ function ListEntry({sugar, time, mood = 0, mealType = 0, comment = ''}: ListEntr
           <div className="list-entry-opt">{renderMeal()}</div>
       }
       {comment !== '' &&
-          <div className="list-entry-opt">{comment}</div>
+          <div style={{opacity: "60%", fontSize: "calc(100% - 4px)"}} className="list-entry-opt">{comment}</div>
       }
     </div>
   );

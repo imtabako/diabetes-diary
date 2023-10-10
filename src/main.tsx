@@ -4,6 +4,8 @@ import App from './App.tsx'
 import './index.css'
 import { BrowserRouter } from "react-router-dom";
 import {SDKProvider, useInitData, useSDK} from "@tma.js/sdk-react";
+import {LocalizationProvider} from "@mui/x-date-pickers";
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 
 /**
@@ -90,7 +92,9 @@ function DisplayGate({ children }: PropsWithChildren) {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <App />
+      </LocalizationProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
