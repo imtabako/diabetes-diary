@@ -1,4 +1,8 @@
-import CanvasJSReact from '@canvasjs/react-charts'
+// import CanvasJSReact from '@canvasjs/react-charts'
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import {CanvasJSReact} from '/src/canvasjs.react.js'
 
 import './Graphs.css'
 
