@@ -7,6 +7,7 @@ import List from "./pages/List.tsx";
 import Today from "./pages/Today.tsx";
 // import Graphs from "./pages/Graphs.tsx";
 import Stats from "./pages/Stats.tsx";
+import Graphs from "./pages/Graphs.tsx";
 // import {useMainButton} from "@tma.js/sdk-react";
 
 function App() {
@@ -158,7 +159,7 @@ function App() {
           <Route path="/diabetes-diary/" element={ <List {...propsObj} /> }/>
           <Route path="/today" element={ <Today {...propsObj} /> }/>
           <Route index path="/" element={ <List {...propsObj} /> }/>
-          <Route path="/graphs" element={ <Today {...propsObj} /> }/>
+          <Route path="/graphs" element={ <Graphs {...propsObj} /> }/>
           <Route path="/stats" element={ <Stats /> }/>
         </SlideRoutes>
         <button className="main-button" onClick={() => setCount((count) => count + 1)}>
