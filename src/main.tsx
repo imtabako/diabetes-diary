@@ -58,7 +58,7 @@ function DisplayGate({ children }: PropsWithChildren) {
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/diabetes-diary">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <SDKProvider initOptions={{ cssVars: true }}>
           <DisplayGate>
