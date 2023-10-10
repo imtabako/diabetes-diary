@@ -55,7 +55,7 @@ function Measure({
 
     const newMeasure = {
       id: newId,
-      sugar: sugarVal.toFixed(2) * 10,
+      sugar: Number(sugarVal.toFixed(2)) * 10,
       date: day + month + year,
       day: day,
       month: month,

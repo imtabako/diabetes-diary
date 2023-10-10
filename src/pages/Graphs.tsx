@@ -28,8 +28,8 @@ function Graphs({
   measures,
   minSugar, maxSugar
                 }) {
-  var CanvasJS = CanvasJSReact.CanvasJS;
-  var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+  const CanvasJS = CanvasJSReact.CanvasJS;
+  const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
   measures.sort((a, b) => compareDateTimes(a, b))
 
