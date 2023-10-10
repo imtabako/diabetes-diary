@@ -103,15 +103,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </React.StrictMode>,
 )
-
-
-// <React.StrictMode>
-// <BrowserRouter>
-// <SDKProvider>
-// <DisplayGate>
-// <InitData />
-// <App />
-// </DisplayGate>
-// </SDKProvider>
-// </BrowserRouter>
-// </React.StrictMode>,

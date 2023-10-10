@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MobileDateTimePicker } from '@mui/x-date-pickers';
 import SlideRule from 'react-slide-rule';
 
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 function Measure({
   measures, setMeasures
